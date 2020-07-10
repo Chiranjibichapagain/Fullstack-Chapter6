@@ -19,13 +19,10 @@ const asObject = (anecdote) => {
 };
 
 const initialState = anecdotesAtStart.map(asObject); // returns array of objects..
-console.log("lyang lyang", initialState);
 
 const reducer = (state = initialState, action) => {
-  console.log("actioooooon", action.data);
   switch (action.type) {
     case "NEW_ANECDOTE":
-      console.log("actioooooon inside a.t....", state, action.data);
       return [...state, action.data];
     case "VOTE":
       const id = action.data.id;
@@ -34,19 +31,18 @@ const reducer = (state = initialState, action) => {
       return state.map((anecdote) =>
         anecdote.id !== id ? anecdote : changedAnecdote
       );
+    default:
+      return state;
   }
-
-  return state;
 };
 
 //actions...
 
 export const createNew = (anecdote) => {
-  console.log("ooooooo", anecdote);
   return {
     type: "NEW_ANECDOTE",
     data: {
-      content:anecdote,
+      content: anecdote,
       id: getId(),
       votes: 0,
     },

@@ -11,6 +11,7 @@ const Notification = () => {
         border: "solid",
         padding: 10,
         borderWidth: 1,
+        margin:"0px 0px 20px 0px"
       };
     }
   };

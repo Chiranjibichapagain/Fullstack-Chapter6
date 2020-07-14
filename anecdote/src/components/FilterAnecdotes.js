@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 const FilterAnecdotes = () => {
   const dispatch = useDispatch();
   return (
-    <div>
+    <div style={{marginBottom:10}}>
       <span>Filter </span>
       <input onChange={(e) => dispatch(filterAction(e.target.value))} />
     </div>

@@ -17,9 +17,9 @@ const create=async(newAnecdote)=>{
 }
 
 const update= async(toChange)=>{
-  console.log('to change--', toChange)
-  // const response= await axios.put(`${baseUrl}/${toChange.id}`, {...toChange, votes:votes+1})
-  // return response.data
+  const response= await axios.put(`${baseUrl}/${toChange.id}`, {...toChange, votes:toChange.votes+1})
+  return  response.data
+
 }
 
 export default { getAll, create, update };

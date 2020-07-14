@@ -6,7 +6,6 @@ import FilterAnecdotes from "./components/FilterAnecdotes";
 import { useDispatch } from "react-redux";
 import { initialize } from "./reducers/anecdoteReducer";
 import anecdoteService from "./services/anecdotes";
-import anecdotes from "./services/anecdotes";
 
 const App = () => {
   const dispatch = useDispatch();

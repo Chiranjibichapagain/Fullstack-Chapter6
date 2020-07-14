@@ -29,14 +29,14 @@ export const initialize = (anecdotes) => {
 export const createNew = (data) => {
   return {
     type: "NEW_ANECDOTE",
-    data
+    data,
   };
 };
 
-export const voting = (id) => {
+export const voting = (anecdote) => {
   return {
     type: "VOTE",
-    data: { id: id },
+    data: anecdote,
   };
 };
 

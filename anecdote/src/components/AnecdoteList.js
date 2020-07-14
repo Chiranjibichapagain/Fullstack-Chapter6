@@ -8,6 +8,7 @@ import {
 import anecdoteService from "../services/anecdotes";
 
 const AnecdoteList = () => {
+  const dispatch = useDispatch();
   const anecdotes = useSelector((state) => {
     const anec = state.anecdotes;
     const inputValue = state.filter;
@@ -44,9 +45,21 @@ const AnecdoteList = () => {
           <div key={anecdote.id}>
             <div>{anecdote.content}</div>
             has {anecdote.votes}
-            <button 
-            // onClick={handleVote(anecdote)}
-            >vote</button>
+            <button
+              onClick={async () =>
+                await anecdoteService.update(anecdote).then((response) =>
+                  dispatch(
+                    voting(response),
+                    dispatch(notificationAction(response.content)),
+                    setTimeout(() => {
+                      dispatch(removeNotificationAction());
+                    }, 5000)
+                  )
+                )
+              }
+            >
+              vote
+            </button>
           </div>
         ))}
     </div>

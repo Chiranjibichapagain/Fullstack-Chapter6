@@ -1,11 +1,8 @@
-import { initialState } from "./anecdoteReducer";
+const filterReducer = (state = "", action) => {
 
-const filterReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FILTER":
-      const filterInput = action.data.toLowerCase();
-      const filteredAnecdotes= state.filter(anecdote=>anecdote.content.toLowerCase().includes(filterInput))
-      return (state = filteredAnecdotes);
+      return action.data;
     default:
       return state;
   }

@@ -1,4 +1,3 @@
-import anecdoteService from "../services/anecdotes";
 
 const initialNotification = "";
 

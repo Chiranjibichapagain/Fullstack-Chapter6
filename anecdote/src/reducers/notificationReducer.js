@@ -12,7 +12,7 @@ const notificationReducer = (state = initialNotification, action) => {
 };
 
 //action
-
+let timeoutId;
 export const notificationAction = (anecdote, time) => {
   return async (dispatch) => {
     dispatch({
@@ -20,13 +20,15 @@ export const notificationAction = (anecdote, time) => {
       data: `You have Voted.. ${anecdote.content}`,
     });
 
-    setTimeout(() => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => {
       dispatch({
-        type: "NOTIFICATION",
-        data: "",
+        type: "REMOVE_NOTIFICATION",
       });
     }, time * 1000);
-
   };
 };
 

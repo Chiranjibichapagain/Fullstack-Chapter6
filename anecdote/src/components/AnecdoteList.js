@@ -4,8 +4,7 @@ import { voting } from "../reducers/anecdoteReducer";
 import { notificationAction } from "../reducers/notificationReducer";
 
 const AnecdoteList = (props) => {
-
-    const handleClick = (anecdote) => {
+  const handleClick = (anecdote) => {
     props.voting(anecdote);
     props.notificationAction(anecdote, 5);
   };
@@ -26,18 +25,27 @@ const AnecdoteList = (props) => {
     </div>
   );
 };
+// const mapStateToProps = (state) => {
+//   const anecdotes = state.anecdotes;
+//   const inputValue = state.inputValue;
+//   if (inputValue === "" || inputValue === undefined) {
+//     return { anecdotes: anecdotes };
+//   } else {
+//     return {
+//       anecdotes: anecdotes.filter((anecdote) =>
+//         anecdote.content.toLowerCase().includes(inputValue.toLowerCase())
+//       ),
+//     };
+//   }
+// };
+
 const mapStateToProps = (state) => {
   const anecdotes = state.anecdotes;
   const inputValue = state.inputValue;
-  if (inputValue === "" || inputValue === undefined) {
-    return { anecdotes: anecdotes };
-  } else {
-    return {
-      anecdotes: anecdotes.filter((anecdote) =>
-        anecdote.content.toLowerCase().includes(inputValue.toLowerCase())
-      ),
-    };
-  }
+  return {
+    anecdotes,
+    filter: inputValue,
+  };
 };
 
 const mapDispatchToProps = {

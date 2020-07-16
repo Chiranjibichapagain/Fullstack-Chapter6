@@ -39,7 +39,6 @@ export const createNew = (data) => {
 };
 
 export const voting = (anecdote) => {
-  console.log("in reduce....................r", anecdote);
   return async (dispatch) => {
     const changedAnecdote = await anecdoteService.update(anecdote);
     dispatch({

@@ -25,27 +25,20 @@ const AnecdoteList = (props) => {
     </div>
   );
 };
-// const mapStateToProps = (state) => {
-//   const anecdotes = state.anecdotes;
-//   const inputValue = state.inputValue;
-//   if (inputValue === "" || inputValue === undefined) {
-//     return { anecdotes: anecdotes };
-//   } else {
-//     return {
-//       anecdotes: anecdotes.filter((anecdote) =>
-//         anecdote.content.toLowerCase().includes(inputValue.toLowerCase())
-//       ),
-//     };
-//   }
-// };
-
 const mapStateToProps = (state) => {
   const anecdotes = state.anecdotes;
-  const inputValue = state.inputValue;
-  return {
-    anecdotes,
-    filter: inputValue,
-  };
+  const inputValue = state.filter;
+  if (inputValue === "" || inputValue === undefined) {
+    return { anecdotes: anecdotes, filter: inputValue };
+  } else {
+    const filteredAnecdotes = anecdotes.filter((anecdote) =>
+      anecdote.content.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    return {
+      anecdotes: filteredAnecdotes,
+      filter: inputValue,
+    };
+  }
 };
 
 const mapDispatchToProps = {

@@ -1,15 +1,14 @@
 import React from "react";
 import { filterAction } from "../reducers/filterReducer";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
-const FilterAnecdotes = () => {
-  const dispatch = useDispatch();
+const FilterAnecdotes = (props) => {
   return (
-    <div style={{marginBottom:10}}>
+    <div style={{ marginBottom: 10 }}>
       <span>Filter </span>
-      <input onChange={(e) => dispatch(filterAction(e.target.value))} />
+      <input onChange={(e) => props.filterAction(e.target.value)} />
     </div>
   );
 };
 
-export default FilterAnecdotes;
+export default connect(null, { filterAction })(FilterAnecdotes);
